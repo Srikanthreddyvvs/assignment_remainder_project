@@ -1,0 +1,145 @@
+/* Reset basic styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #F9F7F7;
+  color: #112D4E;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #112D4E;
+}
+
+#auth-section, #assignment-section {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 25px 30px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin: 0 auto 40px auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"] {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 1px solid #DBE2EF;
+  border-radius: 6px;
+  outline: none;
+  background: #F9F7F7;
+  color: #112D4E;
+  transition: 0.3s ease;
+}
+
+input:focus {
+  border-color: #3F72AF;
+  background-color: #FFFFFF;
+}
+
+button {
+  cursor: pointer;
+  background: #3F72AF;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 0;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: white;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background: #2e5d96;
+  box-shadow: 0 0 10px #DBE2EF;
+}
+
+#auth-message {
+  min-height: 22px;
+  margin-top: -10px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+  color: #3F72AF;
+}
+
+#assignment-list {
+  list-style: none;
+  max-height: 240px;
+  overflow-y: auto;
+  padding-left: 0;
+  border: 1px solid #DBE2EF;
+  border-radius: 8px;
+  background: #F9F7F7;
+}
+
+#assignment-list li {
+  padding: 10px 15px;
+  border-bottom: 1px solid #DBE2EF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+#assignment-list li:last-child {
+  border-bottom: none;
+}
+
+#assignment-list button {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  background: #FF4C60;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+#assignment-list button:hover {
+  background: #cc3c4d;
+}
+
+#logout-button {
+  width: 100%;
+  background: #FF5722;
+  margin-top: 15px;
+}
+
+#logout-button:hover {
+  background: #e64a19;
+}
+
+/* Scrollbar styling */
+#assignment-list::-webkit-scrollbar {
+  width: 6px;
+}
+#assignment-list::-webkit-scrollbar-thumb {
+  background: #3F72AF;
+  border-radius: 4px;
+}
+#assignment-list::-webkit-scrollbar-track {
+  background: #F9F7F7;
+}
