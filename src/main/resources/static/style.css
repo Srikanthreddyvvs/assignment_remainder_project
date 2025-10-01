@@ -6,8 +6,9 @@
 }
 
 body {
-  background: #F9F7F7;
-  color: #112D4E;
+  background: url("3d-rendering-hexagonal-texture-background.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: #E3E3E3;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   min-height: 100vh;
   display: flex;
@@ -16,22 +17,34 @@ body {
   padding: 40px 20px;
 }
 
+/* Headings */
 h1, h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #112D4E;
+  color: #00f7ff;
+  text-shadow: 0 0 10px rgba(0, 247, 255, 0.8);
 }
 
+/* Glassmorphism cards */
 #auth-section, #assignment-section {
-  background: #FFFFFF;
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
   padding: 25px 30px;
   max-width: 420px;
   width: 100%;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4),
+              0 0 15px rgba(0, 247, 255, 0.2);
   margin: 0 auto 40px auto;
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#auth-section:hover, #assignment-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5),
+              0 0 25px rgba(0, 247, 255, 0.5);
 }
 
+/* Forms */
 form {
   display: flex;
   flex-direction: column;
@@ -43,65 +56,97 @@ input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type="date"] {
-  padding: 10px 15px;
+  padding: 12px 15px;
   font-size: 1rem;
-  border: 1px solid #DBE2EF;
-  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
   outline: none;
-  background: #F9F7F7;
-  color: #112D4E;
-  transition: 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+  color: #E3E3E3;
+  transition: all 0.3s ease;
 }
 
 input:focus {
-  border-color: #3F72AF;
-  background-color: #FFFFFF;
+  border-color: #00f7ff;
+  background: rgba(0, 247, 255, 0.08);
+  box-shadow: 0 0 8px #00f7ff;
 }
 
+/* Buttons */
 button {
   cursor: pointer;
-  background: #3F72AF;
+  background: linear-gradient(135deg, #00f7ff, #0072ff);
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 12px 0;
   font-weight: 600;
   font-size: 1.05rem;
-  color: white;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Button hover glow */
 button:hover {
-  background: #2e5d96;
-  box-shadow: 0 0 10px #DBE2EF;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  box-shadow: 0 0 15px rgba(0, 247, 255, 0.8);
+  transform: scale(1.05);
 }
 
+/* Button click animation (ripple) */
+button:active::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  animation: ripple 0.6s ease-out;
+}
+@keyframes ripple {
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Auth message */
 #auth-message {
   min-height: 22px;
   margin-top: -10px;
   margin-bottom: 20px;
   font-weight: 600;
   text-align: center;
-  color: #3F72AF;
+  color: #00f7ff;
+  text-shadow: 0 0 6px rgba(0, 247, 255, 0.7);
 }
 
+/* Assignment list */
 #assignment-list {
   list-style: none;
   max-height: 240px;
   overflow-y: auto;
   padding-left: 0;
-  border: 1px solid #DBE2EF;
-  border-radius: 8px;
-  background: #F9F7F7;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  box-shadow: inset 0 0 10px rgba(0, 247, 255, 0.2);
 }
 
 #assignment-list li {
-  padding: 10px 15px;
-  border-bottom: 1px solid #DBE2EF;
+  padding: 12px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: 500;
   font-size: 0.95rem;
+  color: #E3E3E3;
 }
 
 #assignment-list li:last-child {
@@ -111,25 +156,28 @@ button:hover {
 #assignment-list button {
   padding: 6px 12px;
   font-size: 0.9rem;
-  background: #FF4C60;
+  background: linear-gradient(135deg, #ff4c60, #ff1e40);
   color: white;
   border: none;
   border-radius: 6px;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 #assignment-list button:hover {
-  background: #cc3c4d;
+  background: linear-gradient(135deg, #ff6b81, #ff1e40);
+  box-shadow: 0 0 12px rgba(255, 76, 96, 0.8);
 }
 
+/* Logout button */
 #logout-button {
   width: 100%;
-  background: #FF5722;
+  background: linear-gradient(135deg, #ff5722, #e64a19);
   margin-top: 15px;
 }
 
 #logout-button:hover {
-  background: #e64a19;
+  background: linear-gradient(135deg, #ff7043, #ff3d00);
+  box-shadow: 0 0 15px rgba(255, 87, 34, 0.8);
 }
 
 /* Scrollbar styling */
@@ -137,9 +185,9 @@ button:hover {
   width: 6px;
 }
 #assignment-list::-webkit-scrollbar-thumb {
-  background: #3F72AF;
+  background: #00f7ff;
   border-radius: 4px;
 }
 #assignment-list::-webkit-scrollbar-track {
-  background: #F9F7F7;
+  background: transparent;
 }
